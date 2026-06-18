@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="slides-format" content="viewport">
+    <title>Post-Op Rehab Guide — Laparoscopic Umbilical Hernia Repair</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --color-bg: #0b1623; --color-bg-deep: #060d17; --color-surface: #112036;
+            --color-text: #e8f4f8; --color-text-secondary: #a8c8d8; --color-text-muted: #6a97b0;
+            --color-accent-1: #38bdf8; --color-accent-2: #34d399; --color-accent-3: #f0abfc;
+            --color-glass-bg: rgba(255,255,255,0.05); --color-glass-border: rgba(56,189,248,0.12);
+            --color-vignette: rgba(0,0,0,0.45);
+            --font-display: 'DM Serif Display', serif; --font-body: 'DM Sans', sans-serif;
+        }
+    </style>
+    <style>
+        :root{--color-bg:#0b1623;--color-text:#e8f4f8;--glow-color-rgb:56,189,248;}
+        *,*::before,*::after{box-sizing:border-box;}
+        html,body{background:var(--color-bg);margin:0;}
+        body{font-family:'DM Sans',sans-serif;color:var(--color-text);overflow:hidden;height:100vh;width:100vw;}
+        .deck{width:100vw;height:100vh;position:relative;}
+        .slide{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--color-bg);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transform:scale(0.95);transition:opacity 0.7s ease,transform 0.7s ease;pointer-events:none;overflow:hidden;}
+        .slide.active{opacity:1;transform:scale(1);pointer-events:all;}
+        .slide>.content{position:relative;z-index:2;width:100%;max-width:1100px;padding:clamp(1.5rem,4vw,4rem);}
+        .nav-controls{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:100;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);padding:10px 24px;border-radius:40px;border:1px solid rgba(56,189,248,0.12);}
+        .nav-btn{width:40px;height:40px;border:none;background:rgba(56,189,248,0.08);color:#38bdf8;border-radius:50%;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.3s;}
+        .nav-btn:hover{background:rgba(56,189,248,0.18);}
+        .slide-dots{display:flex;gap:8px;}
+        .slide-dots .dot{width:10px;height:10px;border-radius:50%;background:rgba(56,189,248,0.2);cursor:pointer;transition:background 0.3s,transform 0.3s;}
+        .slide-dots .dot.active{background:#38bdf8;transform:scale(1.3);}
+        .slide-counter{font-size:0.8rem;color:#6a97b0;min-width:40px;text-align:center;}
+        .reveal{opacity:0;transform:translateY(20px);}
+        @keyframes float-slow{0%{transform:translate(0,0) scale(1);}25%{transform:translate(60px,-50px) scale(1.12);}50%{transform:translate(-40px,40px) scale(0.9);}75%{transform:translate(50px,20px) scale(1.08);}100%{transform:translate(0,0) scale(1);}}
+        @keyframes float-drift{0%{transform:translate(0,0) scale(1) rotate(0deg);}33%{transform:translate(-50px,-60px) scale(1.15) rotate(3deg);}66%{transform:translate(40px,30px) scale(0.88) rotate(-2deg);}100%{transform:translate(0,0) scale(1) rotate(0deg);}}
+        @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+        @keyframes glow-pulse{0%,100%{text-shadow:0 0 20px rgba(56,189,248,0.5),0 0 40px rgba(56,189,248,0.2);}50%{text-shadow:0 0 30px rgba(56,189,248,0.8),0 0 60px rgba(56,189,248,0.3);}}
+        .glow-pulse{animation:glow-pulse 3s ease-in-out infinite;}
+        .stat-glow{text-shadow:0 0 30px rgba(56,189,248,0.6),0 0 60px rgba(56,189,248,0.25);}
+        .gradient-mesh{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+        .blob{position:absolute;border-radius:50%;filter:blur(80px);animation:float-slow 10s ease-in-out infinite;}
+        .blob:nth-child(2){animation:float-drift 14s ease-in-out infinite;}
+        .blob:nth-child(3){animation:float-slow 18s ease-in-out infinite reverse;}
+        .slide::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.03;mix-blend-mode:overlay;}
+        .slide::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 50%,var(--color-vignette) 100%);}
+        .warning-card{border-left:4px solid #f59e0b;background:rgba(245,158,11,0.08);border-radius:0 12px 12px 0;}
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.2s!important;}}
+    </style>
+</head>
+<body>
+<div class="mouse-spotlight" style="position:fixed;inset:0;z-index:99;pointer-events:none;"></div>
+<div class="deck">
+
+<div class="slide slide-1 active" data-slide="1">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:500px;height:500px;top:-100px;right:-100px;background:#38bdf8;opacity:0.14;"></div>
+        <div class="blob" style="width:350px;height:350px;bottom:-80px;left:-60px;background:#34d399;opacity:0.10;"></div>
+        <div class="blob" style="width:200px;height:200px;top:40%;left:10%;background:#f0abfc;opacity:0.08;"></div>
+    </div>
+    <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1;"></canvas>
+    <div class="content text-center">
+        <div style="font-size:96px;margin-bottom:1.2rem;animation:float 3.5s ease-in-out infinite;" class="reveal">🏃</div>
+        <h1 class="reveal" style="font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,5.5vw,4.2rem);background:linear-gradient(135deg,#38bdf8,#34d399,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem;line-height:1.1;">Post-Op Rehab Guide</h1>
+        <p class="reveal" style="font-size:clamp(0.85rem,1.4vw,1.1rem);color:#6a97b0;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:0.6rem;">Laparoscopic Umbilical Mesh Hernia Repair</p>
+        <p class="reveal" style="font-size:1rem;color:#38bdf8;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">Day 15 → Week 12 &nbsp;·&nbsp; Return to Half-Triathlon</p>
+    </div>
+</div>
+
+<div class="slide slide-2" data-slide="2">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:400px;height:400px;top:-80px;right:-80px;background:#38bdf8;opacity:0.08;"></div>
+        <div class="blob" style="width:250px;height:250px;bottom:-60px;left:-40px;background:#34d399;opacity:0.06;"></div>
+    </div>
+    <div class="content">
+        <p class="reveal" style="color:#38bdf8;text-transform:uppercase;letter-spacing:0.18em;font-size:0.82rem;font-weight:600;margin-bottom:0.6rem;">Understanding Your Recovery</p>
+        <h2 class="reveal" style="font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:1.4rem;">How Your Mesh Repair Heals</h2>
+        <div class="grid grid-cols-3 gap-5 reveal">
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(56,189,248,0.12);border-radius:16px;padding:1.5rem;text-align:center;">
+                <div style="font-size:2.4rem;margin-bottom:0.6rem;">⏱️</div>
+                <div style="font-size:2rem;font-weight:700;color:#38bdf8;" class="stat-glow">6 wks</div>
+                <div style="font-size:0.82rem;color:#6a97b0;margin-top:0.4rem;line-height:1.4;">Mesh reaches ~85% strength. Most restrictions lift.</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(52,211,153,0.12);border-radius:16px;padding:1.5rem;text-align:center;">
+                <div style="font-size:2.4rem;margin-bottom:0.6rem;">🧬</div>
+                <div style="font-size:2rem;font-weight:700;color:#34d399;">12 wks</div>
+                <div style="font-size:0.82rem;color:#6a97b0;margin-top:0.4rem;line-height:1.4;">Full return to sport, triathlon training &amp; heavy lifting.</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(240,171,252,0.12);border-radius:16px;padding:1.5rem;text-align:center;">
+                <div style="font-size:2.4rem;margin-bottom:0.6rem;">📍</div>
+                <div style="font-size:2rem;font-weight:700;color:#f0abfc;">Day 15</div>
+                <div style="font-size:0.82rem;color:#6a97b0;margin-top:0.4rem;line-height:1.4;">You are here. Acute phase done. Moderate loading begins.</div>
+            </div>
+        </div>
+        <div class="reveal warning-card" style="margin-top:1.4rem;padding:1rem 1.4rem;">
+            <p style="font-size:0.9rem;color:#fcd34d;margin:0;"><strong>Pain rule:</strong> Mild tightness is normal. Sharp, searing, or worsening pain = stop and rest 2 weeks before retrying.</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-3" data-slide="3">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:380px;height:380px;top:-80px;left:-60px;background:#34d399;opacity:0.08;"></div>
+        <div class="blob" style="width:260px;height:260px;bottom:-60px;right:-40px;background:#38bdf8;opacity:0.06;"></div>
+    </div>
+    <div class="content">
+        <div class="reveal" style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.25);font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#34d399;margin-bottom:1rem;">✅ Phase 1 — Days 0–14 — Complete</div>
+        <h2 class="reveal" style="font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.8vw,2.6rem);margin-bottom:1.4rem;">What You Already Did Right</h2>
+        <div class="grid grid-cols-2 gap-5 reveal">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(56,189,248,0.1);border-radius:14px;padding:1.4rem;">
+                <p style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:#38bdf8;font-weight:600;margin:0 0 0.7rem;">✓ Protected the Repair</p>
+                <ul style="font-size:0.92rem;color:#a8c8d8;line-height:1.8;margin:0;padding-left:1.2rem;">
+                    <li>Lifting kept under <strong style="color:#e8f4f8;">15 lbs</strong></li>
+                    <li>Walking only for cardio</li>
+                    <li>No direct core work</li>
+                    <li>Incisions kept clean and dry</li>
+                </ul>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(52,211,153,0.1);border-radius:14px;padding:1.4rem;">
+                <p style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:#34d399;font-weight:600;margin:0 0 0.7rem;">✓ Gentle Activation</p>
+                <ul style="font-size:0.92rem;color:#a8c8d8;line-height:1.8;margin:0;padding-left:1.2rem;">
+                    <li>Diaphragmatic breathing</li>
+                    <li>Daily walks, increasing distance</li>
+                    <li>Gentle hip and hamstring stretches</li>
+                    <li>No sit-ups, crunches, or planks</li>
+                </ul>
+            </div>
+        </div>
+        <p class="reveal" style="margin-top:1.2rem;font-size:0.95rem;color:#6a97b0;text-align:center;">Mesh integration is underway. You are cleared to move into Phase 2.</p>
+    </div>
+</div>
+
+<div class="slide slide-4" data-slide="4">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:420px;height:420px;top:-100px;right:-80px;background:#38bdf8;opacity:0.09;"></div>
+        <div class="blob" style="width:280px;height:280px;bottom:-60px;left:-50px;background:#f0abfc;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <div class="reveal" style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:rgba(56,189,248,0.10);border:1px solid rgba(56,189,248,0.22);font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#38bdf8;margin-bottom:1rem;">🚴 Phase 2 — Days 15–45 — Cardio</div>
+        <h2 class="reveal" style="font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.8vw,2.6rem);margin-bottom:1.2rem;">Cardio: Start This Week</h2>
+        <div class="grid grid-cols-3 gap-4 reveal">
+            <div style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.14);border-radius:14px;padding:1.3rem;">
+                <div style="font-size:2rem;margin-bottom:0.5rem;">🚴</div>
+                <p style="font-size:0.95rem;font-weight:600;color:#38bdf8;margin:0 0 0.4rem;">Stationary Bike</p>
+                <p style="font-size:0.84rem;color:#a8c8d8;line-height:1.5;margin:0;">Start <strong>now</strong>. Low resistance, 15–20 min. First green-lit cardio after repair.</p>
+            </div>
+            <div style="background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.14);border-radius:14px;padding:1.3rem;">
+                <div style="font-size:2rem;margin-bottom:0.5rem;">🏃</div>
+                <p style="font-size:0.95rem;font-weight:600;color:#34d399;margin:0 0 0.4rem;">Elliptical</p>
+                <p style="font-size:0.84rem;color:#a8c8d8;line-height:1.5;margin:0;">Add after bike feels comfortable. Low resistance. Zero impact on repair site.</p>
+            </div>
+            <div style="background:rgba(240,171,252,0.06);border:1px solid rgba(240,171,252,0.14);border-radius:14px;padding:1.3rem;">
+                <div style="font-size:2rem;margin-bottom:0.5rem;">🏊</div>
+                <p style="font-size:0.95rem;font-weight:600;color:#f0abfc;margin:0 0 0.4rem;">Swimming</p>
+                <p style="font-size:0.84rem;color:#a8c8d8;line-height:1.5;margin:0;"><strong>Wait</strong> until incisions fully closed &amp; dry. Typically weeks 3–4 post-op.</p>
+            </div>
+        </div>
+        <div class="reveal" style="margin-top:1.1rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(56,189,248,0.1);border-radius:12px;padding:1rem 1.2rem;">
+                <p style="font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#38bdf8;margin:0 0 0.4rem;">Progression Rule</p>
+                <p style="font-size:0.87rem;color:#a8c8d8;margin:0;">Increase duration first, then resistance. Never both in the same week.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(245,158,11,0.15);border-radius:12px;padding:1rem 1.2rem;">
+                <p style="font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#f59e0b;margin:0 0 0.4rem;">Running — Not Yet</p>
+                <p style="font-size:0.87rem;color:#a8c8d8;margin:0;">Pool jogging begins weeks 5–6. Outdoor running: weeks 7+.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-5" data-slide="5">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:360px;height:360px;top:-70px;left:-60px;background:#34d399;opacity:0.09;"></div>
+        <div class="blob" style="width:280px;height:280px;bottom:-50px;right:-40px;background:#38bdf8;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <div class="reveal" style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:rgba(52,211,153,0.10);border:1px solid rgba(52,211,153,0.22);font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#34d399;margin-bottom:1rem;">💪 Phase 2 — Days 15–45 — Strength</div>
+        <h2 class="reveal" style="font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.8vw,2.6rem);margin-bottom:1.2rem;">Strength: Body Weight &amp; Light Resistance</h2>
+        <div class="grid grid-cols-2 gap-5">
+            <div class="reveal" style="background:rgba(255,255,255,0.04);border:1px solid rgba(52,211,153,0.12);border-radius:14px;padding:1.3rem;">
+                <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#34d399;margin:0 0 0.8rem;">✅ Do These Now</p>
+                <ul style="font-size:0.9rem;color:#a8c8d8;line-height:1.9;margin:0;padding-left:1.2rem;">
+                    <li>Mini-squats (partial range, body weight)</li>
+                    <li>Forward &amp; reverse lunges</li>
+                    <li>Heel raises (standing)</li>
+                    <li>Step-downs off a low step</li>
+                    <li>Lateral mini-band walks</li>
+                    <li>Sidelying hip abduction (clamshells)</li>
+                    <li>Light leg press machine</li>
+                </ul>
+            </div>
+            <div class="reveal" style="background:rgba(255,255,255,0.04);border:1px solid rgba(239,68,68,0.12);border-radius:14px;padding:1.3rem;">
+                <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f87171;margin:0 0 0.8rem;">🚫 Avoid Until Week 6+</p>
+                <ul style="font-size:0.9rem;color:#a8c8d8;line-height:1.9;margin:0;padding-left:1.2rem;">
+                    <li>Sit-ups &amp; crunches</li>
+                    <li>Full planks</li>
+                    <li>Overhead pressing</li>
+                    <li>Twisting under load</li>
+                    <li>Explosive movements</li>
+                    <li>Lifting over 25 lbs</li>
+                </ul>
+            </div>
+        </div>
+        <div class="reveal" style="margin-top:1.1rem;background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.12);border-radius:12px;padding:0.9rem 1.2rem;display:flex;align-items:center;gap:0.8rem;">
+            <span style="font-size:1.4rem;">📏</span>
+            <p style="font-size:0.88rem;color:#a8c8d8;margin:0;"><strong style="color:#e8f4f8;">Lifting limit: up to 25 lbs.</strong> Stop if you feel pulling, sharp pain, or a bulge at the repair site.</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-6" data-slide="6">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:400px;height:400px;top:-90px;right:-70px;background:#f0abfc;opacity:0.08;"></div>
+        <div class="blob" style="width:260px;height:260px;bottom:-60px;left:-40px;background:#38bdf8;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <p class="reveal" style="color:#f0abfc;text-transform:uppercase;letter-spacing:0.18em;font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;">Days 15–45 · 10 reps, 1–2 sets daily</p>
+        <h2 class="reveal" style="font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.8vw,2.6rem);margin-bottom:1.1rem;">Core Activation: Safe Now</h2>
+        <div class="grid grid-cols-3 gap-4 reveal">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(240,171,252,0.12);border-radius:12px;padding:1.1rem;">
+                <p style="font-weight:600;font-size:0.9rem;color:#f0abfc;margin:0 0 0.4rem;">Pelvic Tilt</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;line-height:1.5;margin:0;">Lie on back. Tighten abdomen, tilt hips back, pull belly to floor. Hold 5 sec.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(56,189,248,0.12);border-radius:12px;padding:1.1rem;">
+                <p style="font-weight:600;font-size:0.9rem;color:#38bdf8;margin:0 0 0.4rem;">Diaphragmatic Breathing</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;line-height:1.5;margin:0;">Slow deep breath 4x/day. Exhale fully, then fill lungs completely.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(52,211,153,0.12);border-radius:12px;padding:1.1rem;">
+                <p style="font-weight:600;font-size:0.9rem;color:#34d399;margin:0 0 0.4rem;">Core Tightening</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;line-height:1.5;margin:0;">Standing. Pull belly button to spine, hold 5 sec. Practice throughout the day.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(240,171,252,0.12);border-radius:12px;padding:1.1rem;">
+                <p style="font-weight:600;font-size:0.9rem;color:#f0abfc;margin:0 0 0.4rem;">Standing Knee Raise</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;line-height:1.5;margin:0;">Hold chair for balance. Alternate knee raises slowly. 10 each side.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(56,189,248,0.12);border-radius:12px;padding:1.1rem;">
+                <p style="font-weight:600;font-size:0.9rem;color:#38bdf8;margin:0 0 0.4rem;">Heel Taps (Lying)</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;line-height:1.5;margin:0;">Knees to 90°. Alternate tapping each heel to floor, core braced throughout.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(52,211,153,0.12);border-radius:12px;padding:1.1rem;">
+                <p style="font-weight:600;font-size:0.9rem;color:#34d399;margin:0 0 0.4rem;">Cat / Cow</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;line-height:1.5;margin:0;">Hands and knees. Gently round then extend spine. Slow, controlled. Great for stiffness.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-7" data-slide="7">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:380px;height:380px;top:-80px;left:-60px;background:#38bdf8;opacity:0.08;"></div>
+        <div class="blob" style="width:260px;height:260px;bottom:-50px;right:-40px;background:#34d399;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <p class="reveal" style="color:#38bdf8;text-transform:uppercase;letter-spacing:0.18em;font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;">Days 15–45 · Pain-Free Only</p>
+        <h2 class="reveal" style="font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.8vw,2.6rem);margin-bottom:1rem;">Stretching, Mobility &amp; Pain Relief</h2>
+        <div class="grid grid-cols-2 gap-5">
+            <div class="reveal">
+                <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#34d399;margin:0 0 0.8rem;">✅ Safe Stretches</p>
+                <ul style="font-size:0.9rem;color:#a8c8d8;line-height:2;margin:0;padding-left:1.2rem;">
+                    <li><strong style="color:#e8f4f8;">Hip flexor</strong> — kneeling lunge, upright torso</li>
+                    <li><strong style="color:#e8f4f8;">Hamstring</strong> — seated or supine, gentle</li>
+                    <li><strong style="color:#e8f4f8;">Quad</strong> — standing, hold ankle</li>
+                    <li><strong style="color:#e8f4f8;">Adductor</strong> — seated butterfly or side lunge</li>
+                    <li><strong style="color:#e8f4f8;">Hip circles</strong> — standing range of motion</li>
+                </ul>
+            </div>
+            <div class="reveal">
+                <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f87171;margin:0 0 0.8rem;">🚫 Avoid</p>
+                <ul style="font-size:0.9rem;color:#a8c8d8;line-height:2;margin:0 0 0.9rem;padding-left:1.2rem;">
+                    <li>Deep abdominal stretching</li>
+                    <li>Aggressive trunk rotation</li>
+                    <li>Any stretch creating pulling at incision</li>
+                </ul>
+                <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:10px;padding:0.9rem 1rem;">
+                    <p style="font-size:0.85rem;color:#fcd34d;margin:0;line-height:1.5;"><strong>Stiffness &amp; pain:</strong> Confirm Tylenol vs Advil with Dr. Passarelli. Ice 15–20 min on sore areas. Gentle movement beats rest alone.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-8" data-slide="8">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:400px;height:400px;top:-90px;right:-70px;background:#34d399;opacity:0.09;"></div>
+        <div class="blob" style="width:270px;height:270px;bottom:-60px;left:-50px;background:#38bdf8;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <div class="reveal" style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:rgba(52,211,153,0.10);border:1px solid rgba(52,211,153,0.22);font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#34d399;margin-bottom:1rem;">🔥 Phase 3 — Weeks 5–6</div>
+        <h2 class="reveal" style="font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.8vw,2.6rem);margin-bottom:1.2rem;">Core Engagement &amp; Light Jogging</h2>
+        <div class="grid grid-cols-2 gap-5">
+            <div class="reveal" style="background:rgba(255,255,255,0.04);border:1px solid rgba(52,211,153,0.14);border-radius:14px;padding:1.3rem;">
+                <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#34d399;margin:0 0 0.8rem;">Core Progression</p>
+                <ul style="font-size:0.88rem;color:#a8c8d8;line-height:1.9;margin:0;padding-left:1.2rem;">
+                    <li><strong style="color:#e8f4f8;">Bridging</strong> → progress to single-leg bridge</li>
+                    <li><strong style="color:#e8f4f8;">Bird dog</strong> — opposite arm/leg from back</li>
+                    <li><strong style="color:#e8f4f8;">Quadruped</strong> — 4-point → 3-point → 2-point</li>
+                    <li><strong style="color:#e8f4f8;">Plank</strong> — start on knees, 5-sec holds only</li>
+                    <li><strong style="color:#e8f4f8;">Gentle curl-ups</strong> after surgeon OK at wk 6</li>
+                </ul>
+            </div>
+            <div class="reveal" style="background:rgba(255,255,255,0.04);border:1px solid rgba(56,189,248,0.14);border-radius:14px;padding:1.3rem;">
+                <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#38bdf8;margin:0 0 0.8rem;">Cardio &amp; Strength Upgrades</p>
+                <ul style="font-size:0.88rem;color:#a8c8d8;line-height:1.9;margin:0;padding-left:1.2rem;">
+                    <li><strong style="color:#e8f4f8;">Pool jogging</strong> (preferred) or easy treadmill jog</li>
+                    <li><strong style="color:#e8f4f8;">Light upper body</strong> — machines only, no overhead</li>
+                    <li><strong style="color:#e8f4f8;">Increase resistance</strong> on bike and elliptical</li>
+                    <li><strong style="color:#e8f4f8;">Farmers carry</strong> — 5 lb each hand</li>
+                </ul>
+            </div>
+        </div>
+        <div class="reveal" style="margin-top:1.1rem;background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.12);border-radius:12px;padding:0.9rem 1.2rem;">
+            <p style="font-size:0.88rem;color:#a8c8d8;margin:0;"><strong style="color:#38bdf8;">6-week milestone:</strong> Mesh is ~85% healed. Most lifting restrictions lift. Confirm with Dr. Passarelli before advancing to Phase 4.</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-9" data-slide="9">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:420px;height:420px;top:-100px;right:-80px;background:#38bdf8;opacity:0.10;"></div>
+        <div class="blob" style="width:300px;height:300px;bottom:-70px;left:-50px;background:#34d399;opacity:0.08;"></div>
+        <div class="blob" style="width:200px;height:200px;top:35%;left:8%;background:#f0abfc;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <div class="reveal" style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:rgba(56,189,248,0.10);border:1px solid rgba(56,189,248,0.22);font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#38bdf8;margin-bottom:1rem;">🏆 Phase 4 — Weeks 7–12</div>
+        <h2 class="reveal" style="font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.8vw,2.6rem);margin-bottom:1.2rem;">Return to Triathlon Training</h2>
+        <div class="grid grid-cols-3 gap-4 reveal">
+            <div style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.14);border-radius:14px;padding:1.2rem;">
+                <div style="font-size:1.8rem;margin-bottom:0.5rem;">🏃</div>
+                <p style="font-weight:600;font-size:0.92rem;color:#38bdf8;margin:0 0 0.5rem;">Running</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;line-height:1.5;margin:0;">Run/walk intervals. Increase run time weekly. Build mileage slowly.</p>
+            </div>
+            <div style="background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.14);border-radius:14px;padding:1.2rem;">
+                <div style="font-size:1.8rem;margin-bottom:0.5rem;">🏊</div>
+                <p style="font-weight:600;font-size:0.92rem;color:#34d399;margin:0 0 0.5rem;">Swimming</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;line-height:1.5;margin:0;">Full lap sessions. Build distance progressively. Open water after week 8.</p>
+            </div>
+            <div style="background:rgba(240,171,252,0.06);border:1px solid rgba(240,171,252,0.14);border-radius:14px;padding:1.2rem;">
+                <div style="font-size:1.8rem;margin-bottom:0.5rem;">🚴</div>
+                <p style="font-weight:600;font-size:0.92rem;color:#f0abfc;margin:0 0 0.5rem;">Cycling</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;line-height:1.5;margin:0;">Road/tri bike at wk 6–8. Ease into aero position — it loads the core.</p>
+            </div>
+        </div>
+        <div class="reveal" style="margin-top:1rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(56,189,248,0.1);border-radius:12px;padding:1rem 1.2rem;">
+                <p style="font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#38bdf8;margin:0 0 0.4rem;">Strength Training</p>
+                <p style="font-size:0.86rem;color:#a8c8d8;margin:0;line-height:1.5;">Return at ~50% prior weights. Add 5–10% per week. No HIIT/plyos until wk 8–10.</p>
+            </div>
+            <div style="background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.14);border-radius:12px;padding:1rem 1.2rem;">
+                <p style="font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#34d399;margin:0 0 0.4rem;">Week 12 Goal</p>
+                <p style="font-size:0.86rem;color:#a8c8d8;margin:0;line-height:1.5;">Full return to half-triathlon training. All restrictions lifted.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-10" data-slide="10">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:380px;height:380px;top:-80px;left:-60px;background:#38bdf8;opacity:0.08;"></div>
+        <div class="blob" style="width:260px;height:260px;bottom:-50px;right:-40px;background:#f0abfc;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <h2 class="reveal" style="font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.8vw,2.6rem);margin-bottom:1.5rem;text-align:center;">Full Recovery Roadmap</h2>
+        <div style="position:relative;">
+            <div style="position:absolute;left:115px;top:12px;bottom:12px;width:2px;background:linear-gradient(to bottom,#38bdf8,#34d399,#f0abfc,#38bdf8);border-radius:2px;"></div>
+            <div class="reveal" style="display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1rem;">
+                <div style="min-width:110px;text-align:right;font-size:0.8rem;font-weight:600;color:#6a97b0;padding-top:2px;">Days 0–14</div>
+                <div style="width:12px;height:12px;border-radius:50%;background:#38bdf8;box-shadow:0 0 8px rgba(56,189,248,0.5);margin-top:2px;flex-shrink:0;"></div>
+                <div><strong style="color:#38bdf8;font-size:0.9rem;">Phase 1 — Protective ✅</strong><span style="font-size:0.84rem;color:#a8c8d8;"> — Walking, breathing, &lt;15 lb lift limit</span></div>
+            </div>
+            <div class="reveal" style="display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1rem;">
+                <div style="min-width:110px;text-align:right;font-size:0.8rem;font-weight:600;color:#38bdf8;padding-top:2px;">Days 15–45 📍</div>
+                <div style="width:14px;height:14px;border-radius:50%;background:#38bdf8;box-shadow:0 0 14px rgba(56,189,248,0.9);margin-top:1px;flex-shrink:0;"></div>
+                <div><strong style="color:#38bdf8;font-size:0.9rem;">Phase 2 — Moderate Loading ← You Are Here</strong><span style="font-size:0.84rem;color:#a8c8d8;"> — Bike, elliptical, body weight, core activation</span></div>
+            </div>
+            <div class="reveal" style="display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1rem;">
+                <div style="min-width:110px;text-align:right;font-size:0.8rem;font-weight:600;color:#6a97b0;padding-top:2px;">Weeks 5–6</div>
+                <div style="width:12px;height:12px;border-radius:50%;background:#34d399;box-shadow:0 0 8px rgba(52,211,153,0.5);margin-top:2px;flex-shrink:0;"></div>
+                <div><strong style="color:#34d399;font-size:0.9rem;">Phase 3 — Core Engagement</strong><span style="font-size:0.84rem;color:#a8c8d8;"> — Light planks, pool jogging, light upper body</span></div>
+            </div>
+            <div class="reveal" style="display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1rem;">
+                <div style="min-width:110px;text-align:right;font-size:0.8rem;font-weight:600;color:#6a97b0;padding-top:2px;">Weeks 7–12</div>
+                <div style="width:12px;height:12px;border-radius:50%;background:#f0abfc;box-shadow:0 0 8px rgba(240,171,252,0.5);margin-top:2px;flex-shrink:0;"></div>
+                <div><strong style="color:#f0abfc;font-size:0.9rem;">Phase 4 — Return to Sport</strong><span style="font-size:0.84rem;color:#a8c8d8;"> — Run, swim, cycle, gym at 50%→100%</span></div>
+            </div>
+            <div class="reveal" style="display:flex;align-items:flex-start;gap:1.2rem;">
+                <div style="min-width:110px;text-align:right;font-size:0.8rem;font-weight:600;color:#6a97b0;padding-top:2px;">Week 12+</div>
+                <div style="width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#38bdf8,#34d399);box-shadow:0 0 12px rgba(56,189,248,0.7);margin-top:2px;flex-shrink:0;"></div>
+                <div><strong style="color:#38bdf8;font-size:0.9rem;">🏁 Full Half-Triathlon Training</strong><span style="font-size:0.84rem;color:#a8c8d8;"> — All restrictions lifted. Race season begins.</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-11" data-slide="11">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:400px;height:400px;top:-90px;right:-70px;background:#f87171;opacity:0.08;"></div>
+        <div class="blob" style="width:260px;height:260px;bottom:-60px;left:-40px;background:#38bdf8;opacity:0.06;"></div>
+    </div>
+    <canvas class="particle-canvas-ambient" style="position:absolute;inset:0;z-index:1;"></canvas>
+    <div class="content">
+        <p class="reveal" style="color:#f87171;text-transform:uppercase;letter-spacing:0.18em;font-size:0.82rem;font-weight:600;margin-bottom:0.5rem;">Know When to Stop</p>
+        <h2 class="reveal" style="font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.8vw,2.6rem);margin-bottom:1.3rem;">Warning Signs — Call Dr. Passarelli</h2>
+        <div class="grid grid-cols-2 gap-4 reveal">
+            <div style="border-left:4px solid #f87171;background:rgba(248,113,113,0.07);border-radius:0 12px 12px 0;padding:1rem 1.2rem;">
+                <p style="font-weight:600;color:#f87171;font-size:0.9rem;margin:0 0 0.3rem;">New or worsening bulge</p>
+                <p style="font-size:0.84rem;color:#a8c8d8;margin:0;line-height:1.4;">At the umbilical repair site. Could indicate hernia recurrence.</p>
+            </div>
+            <div style="border-left:4px solid #f87171;background:rgba(248,113,113,0.07);border-radius:0 12px 12px 0;padding:1rem 1.2rem;">
+                <p style="font-weight:600;color:#f87171;font-size:0.9rem;margin:0 0 0.3rem;">Sudden sharp abdominal pain</p>
+                <p style="font-size:0.84rem;color:#a8c8d8;margin:0;line-height:1.4;">Different from normal tightness. Sharp or stabbing. Stop all activity immediately.</p>
+            </div>
+            <div style="border-left:4px solid #f59e0b;background:rgba(245,158,11,0.07);border-radius:0 12px 12px 0;padding:1rem 1.2rem;">
+                <p style="font-weight:600;color:#f59e0b;font-size:0.9rem;margin:0 0 0.3rem;">Fever, redness, or discharge</p>
+                <p style="font-size:0.84rem;color:#a8c8d8;margin:0;line-height:1.4;">At the incision site. Signs of possible infection requiring prompt attention.</p>
+            </div>
+            <div style="border-left:4px solid #f87171;background:rgba(248,113,113,0.07);border-radius:0 12px 12px 0;padding:1rem 1.2rem;">
+                <p style="font-weight:600;color:#f87171;font-size:0.9rem;margin:0 0 0.3rem;">Nausea + abdominal pain together</p>
+                <p style="font-size:0.84rem;color:#a8c8d8;margin:0;line-height:1.4;">Possible bowel obstruction. Seek emergency care immediately.</p>
+            </div>
+        </div>
+        <div class="reveal" style="margin-top:1.1rem;background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.15);border-radius:12px;padding:0.9rem 1.2rem;">
+            <p style="font-size:0.88rem;color:#a8c8d8;margin:0;"><strong style="color:#34d399;">Normal vs concerning:</strong> Tightness, stiffness, and mild soreness are expected for weeks. Sharp, sudden, or worsening = call the office.</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-12" data-slide="12">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:450px;height:450px;top:-100px;right:-90px;background:#38bdf8;opacity:0.12;"></div>
+        <div class="blob" style="width:300px;height:300px;bottom:-70px;left:-60px;background:#34d399;opacity:0.09;"></div>
+        <div class="blob" style="width:200px;height:200px;top:40%;left:10%;background:#f0abfc;opacity:0.08;"></div>
+    </div>
+    <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1;"></canvas>
+    <div class="content">
+        <h2 class="reveal" style="font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.8vw,2.6rem);margin-bottom:1.3rem;text-align:center;">Reference Resources</h2>
+        <div class="grid grid-cols-2 gap-4 reveal">
+            <a href="http://www.utsurgery.com/docs/UHC%20Rehab.pdf" target="_blank" style="background:rgba(255,255,255,0.04);border:1px solid rgba(56,189,248,0.14);border-radius:14px;padding:1.1rem 1.3rem;text-decoration:none;display:block;">
+                <p style="font-weight:600;color:#38bdf8;font-size:0.9rem;margin:0 0 0.3rem;">📄 UT Surgery Rehab PDF</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;margin:0;line-height:1.4;">Day-by-day lifting limits and phase timeline from a university medical center.</p>
+            </a>
+            <a href="https://www.nghs.com/hernia/exercises" target="_blank" style="background:rgba(255,255,255,0.04);border:1px solid rgba(52,211,153,0.14);border-radius:14px;padding:1.1rem 1.3rem;text-decoration:none;display:block;">
+                <p style="font-weight:600;color:#34d399;font-size:0.9rem;margin:0 0 0.3rem;">🏋️ NGHS Core Exercise Guide</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;margin:0;line-height:1.4;">Specific exercises with step-by-step instructions by recovery phase.</p>
+            </a>
+            <a href="https://patientslearn.uams.edu/2022/04/herniaclinicvideos/" target="_blank" style="background:rgba(255,255,255,0.04);border:1px solid rgba(240,171,252,0.14);border-radius:14px;padding:1.1rem 1.3rem;text-decoration:none;display:block;">
+                <p style="font-weight:600;color:#f0abfc;font-size:0.9rem;margin:0 0 0.3rem;">🎥 UAMS Hernia Exercise Videos</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;margin:0;line-height:1.4;">Video demos: weeks 0–2 and weeks 4–8 from an academic medical center.</p>
+            </a>
+            <a href="https://www.youtube.com/watch?v=0DAAnNh-yYM" target="_blank" style="background:rgba(255,255,255,0.04);border:1px solid rgba(56,189,248,0.14);border-radius:14px;padding:1.1rem 1.3rem;text-decoration:none;display:block;">
+                <p style="font-weight:600;color:#38bdf8;font-size:0.9rem;margin:0 0 0.3rem;">▶️ Veteran PT — Full Week 0–12 Plan</p>
+                <p style="font-size:0.82rem;color:#a8c8d8;margin:0;line-height:1.4;">YouTube walkthrough by a PT &amp; exercise physiologist. Built for athletes.</p>
+            </a>
+        </div>
+        <div class="reveal" style="margin-top:1rem;text-align:center;">
+            <a href="https://www.taylorharrismd.com/pdf/sports-hernia-repair-pt-protocol.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.7rem 1.5rem;background:linear-gradient(135deg,rgba(56,189,248,0.15),rgba(52,211,153,0.15));border:1px solid rgba(56,189,248,0.25);border-radius:999px;text-decoration:none;color:#38bdf8;font-size:0.88rem;font-weight:600;">📋 Taylor Harris MD — Full Athlete PT Protocol PDF (week-by-week)</a>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="nav-controls">
+    <button class="nav-btn" onclick="changeSlide(-1)">&#8249;</button>
+    <div class="slide-dots" id="dots"></div>
+    <button class="nav-btn" onclick="changeSlide(1)">&#8250;</button>
+    <span class="slide-counter" id="counter">1 / 12</span>
+</div>
+
+<script>
+let current=1;
+const total=document.querySelectorAll('.slide').length;
+const dotsContainer=document.getElementById('dots');
+const counter=document.getElementById('counter');
+for(let i=1;i<=total;i++){const dot=document.createElement('div');dot.className='dot'+(i===1?' active':'');dot.onclick=()=>goToSlide(i);dotsContainer.appendChild(dot);}
+function goToSlide(n){const prev=document.querySelector('.slide.active');const next=document.querySelector('.slide[data-slide="'+n+'"]');if(prev)prev.classList.remove('active');if(next){next.classList.add('active');animateSlide(next);}current=n;updateNav();}
+function changeSlide(dir){let next=current+dir;if(next<1)next=total;if(next>total)next=1;goToSlide(next);}
+function updateNav(){document.querySelectorAll('.dot').forEach((d,i)=>{d.classList.toggle('active',i+1===current);});counter.textContent=current+' / '+total;}
+document.addEventListener('keydown',(e)=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();changeSlide(1);}if(e.key==='ArrowLeft'){e.preventDefault();changeSlide(-1);}});
+let touchStartX=0;document.addEventListener('touchstart',(e)=>{touchStartX=e.touches[0].clientX;});document.addEventListener('touchend',(e)=>{const diff=touchStartX-e.changedTouches[0].clientX;if(Math.abs(diff)>50)changeSlide(diff>0?1:-1);});
+function animateSlide(slide){slide.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transition='none';el.style.opacity='0';el.style.transform='translateY(20px)';el.offsetHeight;const delay=i*0.08;el.style.transition='opacity 0.35s ease '+delay+'s, transform 0.35s ease '+delay+'s';el.style.opacity='1';el.style.transform='translateY(0px)';});}
+document.addEventListener('mousemove',(e)=>{const s=document.querySelector('.mouse-spotlight');if(s)s.style.background='radial-gradient(600px circle at '+e.clientX+'px '+e.clientY+'px, rgba(56,189,248, 0.05), transparent 40%)';});
+window.initParticles=function(canvas,options){if(!canvas)return;const ctx=canvas.getContext('2d');canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;const interactive=options.interactive!==false;const count=options.count||(interactive?55:18);let mx=-1000,my=-1000;const particles=Array.from({length:count},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,size:Math.random()*2.5+0.8,alpha:Math.random()*0.3+0.08}));if(interactive){canvas.addEventListener('mousemove',(e)=>{const rect=canvas.getBoundingClientRect();mx=e.clientX-rect.left;my=e.clientY-rect.top;});canvas.addEventListener('mouseleave',()=>{mx=-1000;my=-1000;});}(function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{if(interactive){const dx=p.x-mx,dy=p.y-my,dist=Math.sqrt(dx*dx+dy*dy);if(dist<120){const force=(120-dist)/120*2;p.vx+=(dx/dist)*force*0.1;p.vy+=(dy/dist)*force*0.1;}}p.vx*=0.98;p.vy*=0.98;p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=canvas.width;if(p.x>canvas.width)p.x=0;if(p.y<0)p.y=canvas.height;if(p.y>canvas.height)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle='rgba(56,189,248,'+p.alpha+')';ctx.fill();});requestAnimationFrame(animate);})();};
+document.querySelectorAll('.particle-canvas').forEach(c=>window.initParticles(c,{interactive:true,count:55}));
+document.querySelectorAll('.particle-canvas-ambient').forEach(c=>window.initParticles(c,{interactive:false,count:18}));
+try{animateSlide(document.querySelector('.slide.active'));}catch(e){}
+</script>
+</body>
+</html>
